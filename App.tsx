@@ -23,8 +23,9 @@ import {
   ScrollView,
 } from 'native-base';
 import NativeBaseIcon from './src/components/NativeBaseIcon';
-import TextModel from './src/components/TextModel';
-import { Example } from './src/components/loginEsempio';
+import TextModel from './components/TextModel';
+import { Example } from './components/loginEsempio';
+
 
 // Color Switch Component
 function ToggleDarkMode() {

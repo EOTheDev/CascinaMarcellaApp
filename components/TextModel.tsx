@@ -1,7 +1,6 @@
 import { Box, Button, FormControl, Heading, Input, ScrollView, View, VStack } from "native-base";
 import React, { useState } from "react";
 import { ToastAndroid } from "react-native";
-import { Text } from "react-native-svg";
 
 const TextModel: React.FC = () => {
     
