@@ -5,11 +5,24 @@ import { ToastAndroid } from "react-native";
 const TextModel: React.FC = () => {
     
     const[refName, setRefName] = useState("");
+    const[refCognome, setRefCognome] = useState("");
+    const[refNumber, setRefNumber] = useState("");
     
     const signup = () => {
-        
-        ToastAndroid.show("Ciao premuto "+refName, ToastAndroid.SHORT);
-        
+      const inscritto = {
+         nome: refName,
+         cognome: refCognome,
+         numero: refNumber
+      }  
+
+        fetch('https://localhost:8080/API', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(inscritto)
+        }).then(res=> ToastAndroid.show(res+"Ti sei iscritto", ToastAndroid.SHORT)).catch(err=> ToastAndroid.show("Non ti sei iscritto perché "+err, ToastAndroid.LONG));
     }
     return (
        
@@ -23,12 +36,12 @@ const TextModel: React.FC = () => {
           fontWeight="medium"
           size="lg">Hello World</Heading>
                 <FormControl.Label>Nome</FormControl.Label>
-                <Input onChangeText={refName=> setRefName(refName)} type="text" />
+                <Input onChangeText={pizza=> setRefName(pizza)} type="text" />
                 <FormControl.Label>Cognome</FormControl.Label>
-                <Input/>
+                <Input onChangeText={pizza=> setRefCognome(pizza)} type="text" />
 
                 <FormControl.Label>Numero di tel</FormControl.Label>
-                <Input type="number"  keyboardType="numeric"/>
+                <Input type="number"  keyboardType="numeric" onChangeText={pizza => setRefNumber(pizza)}/>
                 <Button mt="2" colorScheme="indigo" onPress={signup}>
                     Registrati
                 </Button>
