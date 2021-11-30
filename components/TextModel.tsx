@@ -15,14 +15,14 @@ const TextModel: React.FC = () => {
          numero: refNumber
       }  
 
-        fetch('https://localhost:8080/API', {
+        fetch('https://www.cascinamarcella.it/API', {
           method: 'POST',
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json'
           },
           body: JSON.stringify(inscritto)
-        }).then(res=> ToastAndroid.show(res+"Ti sei iscritto", ToastAndroid.SHORT)).catch(err=> ToastAndroid.show("Non ti sei iscritto perché "+err, ToastAndroid.LONG));
+        }).then(res=> ToastAndroid.show("Ti sei iscritto!" , ToastAndroid.SHORT)).catch(err=> ToastAndroid.show("Non ti sei iscritto perché "+err, ToastAndroid.LONG));
     }
     return (
        
