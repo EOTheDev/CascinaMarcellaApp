@@ -2,17 +2,19 @@ import { Box, Button, FormControl, Heading, Input, ScrollView, View, VStack } fr
 import React, { useState } from "react";
 import { ToastAndroid } from "react-native";
 
-const TextModel: React.FC = () => {
+export const RegistrationModel: React.FC = () => {
     
     const[refName, setRefName] = useState("");
     const[refCognome, setRefCognome] = useState("");
     const[refNumber, setRefNumber] = useState("");
+    const[refEmail, setRefEmail] = useState("");
     
-    const signup = () => {
+    const signUp = () => {
       const inscritto = {
          nome: refName,
          cognome: refCognome,
-         numero: refNumber
+         numero: refNumber,
+         email: refEmail
       }  
 
         fetch('https://www.cascinamarcella.it/API', {
@@ -22,7 +24,7 @@ const TextModel: React.FC = () => {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify(inscritto)
-        }).then(res=> ToastAndroid.show("Ti sei iscritto!" , ToastAndroid.SHORT)).catch(err=> ToastAndroid.show("Non ti sei iscritto perché "+err, ToastAndroid.LONG));
+        }).then(res=> ToastAndroid.show("Ti sei iscritto! "+ res.text , ToastAndroid.SHORT)).catch(err=> ToastAndroid.show("Non ti sei iscritto perché "+err, ToastAndroid.LONG));
     }
     return (
        
@@ -34,16 +36,17 @@ const TextModel: React.FC = () => {
           }}
           color="coolGray.600"
           fontWeight="medium"
-          size="lg">Hello World</Heading>
+          size="lg">Registrazione</Heading>
                 <FormControl.Label>Nome</FormControl.Label>
-                <Input onChangeText={pizza=> setRefName(pizza)} type="text" />
+                <Input onChangeText={val=> setRefName(val)} type="text" />
                 <FormControl.Label>Cognome</FormControl.Label>
-                <Input onChangeText={pizza=> setRefCognome(pizza)} type="text" />
-
-                <FormControl.Label>Numero di tel</FormControl.Label>
-                <Input type="number"  keyboardType="numeric" onChangeText={pizza => setRefNumber(pizza)}/>
-                <Button mt="2" colorScheme="indigo" onPress={signup}>
-                    Registrati
+                <Input onChangeText={val=> setRefCognome(val)} type="text" />
+                <FormControl.Label>Email</FormControl.Label>
+                <Input onChangeText={val=> setRefEmail(val)} type="text" />
+                <FormControl.Label>Numero di Cellulare</FormControl.Label>
+                <Input type="number"  keyboardType="numeric" onChangeText={val => setRefNumber(val)}/>
+                <Button mt="2" colorScheme="indigo" onPress={signUp}>
+                    Conferma
                 </Button>
 
         </FormControl>
@@ -52,5 +55,4 @@ const TextModel: React.FC = () => {
     );
   };
   
-  export default TextModel;
 

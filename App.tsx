@@ -23,8 +23,9 @@ import {
   ScrollView,
 } from 'native-base';
 import NativeBaseIcon from './src/components/NativeBaseIcon';
-import TextModel from './components/TextModel';
-import { Example } from './components/loginEsempio';
+import { Example } from './src/components/loginEsempio';
+import { RegistrationModel } from './src/components/accesshandling/RegistrationModel';
+import { LoginModel } from './src/components/accesshandling/LoginModel';
 
 
 // Color Switch Component
@@ -70,8 +71,8 @@ const App = () => {
           </Link>
           <ToggleDarkMode />
         </VStack>
-        <TextModel />
-        <Example/>
+        <RegistrationModel/>
+        <LoginModel/>
       </Center>
       </ScrollView>
     </NativeBaseProvider>
